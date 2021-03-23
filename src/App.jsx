@@ -1,10 +1,8 @@
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListItem from './components/ListItems';
 import ItemDetails from './components/ItemDetails';
 import Navbar from './components/Navbar';
-
 
 function App() {
   return (
@@ -12,10 +10,10 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <ListItem />
           </Route>
-          <Route path='/details/:id'>
+          <Route path="/details/:id">
             <ItemDetails />
           </Route>
         </Switch>

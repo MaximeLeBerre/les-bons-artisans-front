@@ -1,5 +1,6 @@
-import { BrowserRouter as Router,  Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -11,30 +12,35 @@ import Badge from '@material-ui/core/Badge';
 import green from '@material-ui/core/colors/green';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 
-
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
-    margin: 15,
+    margin: 15
   },
   palette: {
     primary: {
-      main: green,
+      main: green
     },
     secondary: {
-      main: deepOrange,
-    },
-  },
+      main: deepOrange
+    }
+  }
 });
 
-export default function Item({id, name, type, price, rating, warranty_years, available }) {
+export default function Item({
+  id,
+  name,
+  type,
+  price,
+  rating,
+  warrantyYears,
+  available
+}) {
   const classes = useStyles();
 
   const deleteObject = () => {
-    axios.delete(`http://localhost:3000/api/object/${id}`)
-    
-  }
+    axios.delete(`http://localhost:3000/api/object/${id}`);
+  };
 
   return (
     <Card className={classes.root}>
@@ -44,11 +50,36 @@ export default function Item({id, name, type, price, rating, warranty_years, ava
             {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            <p>Type :{type}</p>
-            <p>Price :{price}</p>
-            <p>Rating :{rating}</p>
-            <p>Warranty Years :{warranty_years}</p>
-            <p>Is available :{available ? <Badge color="primary" variant="dot"></Badge> : <Badge color="secondary" variant="dot"></Badge>}</p>
+            <p>
+              Type :
+              {type}
+            </p>
+            <p>
+              Price :
+              {price}
+            </p>
+            <p>
+              Rating :
+              {rating}
+            </p>
+            <p>
+              Warranty Years :
+              {warrantyYears}
+            </p>
+            <p>
+              Is available :
+              {available ? (
+                <Badge
+                  color="primary"
+                  variant="dot"
+                />
+              ) : (
+                <Badge
+                  color="secondary"
+                  variant="dot"
+                />
+              )}
+            </p>
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -58,10 +89,20 @@ export default function Item({id, name, type, price, rating, warranty_years, ava
             Modifier
           </Button>
         </Link>
-        <Button size="small" color="secondary" onClick={deleteObject}  >
+        <Button size="small" color="secondary" onClick={deleteObject}>
           Supprimer
         </Button>
       </CardActions>
     </Card>
   );
 }
+
+Item.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
+  warrantyYears: PropTypes.number.isRequired,
+  available: PropTypes.bool.isRequired
+};

@@ -1,16 +1,17 @@
-import {useParams} from "react-router-dom"
+import { useParams } from 'react-router-dom';
 
+export default function ItemDetails() {
+  const { id } = useParams();
 
-export default function ItemDetails(){
-
-
-  const {id} = useParams();
-
-  return(
+  return (
     <>
-      <h1>Detail de l'item</h1>
-      <h1>c'est l'id : {id}</h1>
+      <h1>
+        Detail de item
+      </h1>
+      <h1>
+        c est id :
+        {id}
+      </h1>
     </>
-
-  )
+  );
 }
