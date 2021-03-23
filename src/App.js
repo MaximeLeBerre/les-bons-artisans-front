@@ -1,14 +1,16 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import ListItem from './components/ListItems';
 import ItemDetails from './components/ItemDetails';
+import Navbar from './components/Navbar';
 
 
 function App() {
   return (
     <>
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path='/'>
             <ListItem />

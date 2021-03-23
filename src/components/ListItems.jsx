@@ -16,9 +16,10 @@ function ListItem () {
 
     return(
       <>
-      <h1>List Item</h1>
+      <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
         {items.map(item => (
           <>
+          
           <Item 
             id={item._id}
             name={item.name}
@@ -28,8 +29,10 @@ function ListItem () {
             warranty_years={item.warranty_years}
             available={item.available}
           />
+          
           </>
         ))}
+      </div>
       </>
     )
 };
