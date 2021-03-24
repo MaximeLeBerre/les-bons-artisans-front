@@ -24,7 +24,9 @@
        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
        "comma-dangle": ["error", "never"],
        "no-underscore-dangle": "off",
-       "prefer-destructuring": ["error", {"object": false, "array": false}]
+       "prefer-destructuring": ["error", {"object": false, "array": false}],
+       "jsx-a11y/label-has-associated-control": "off",
+       "jsx-a11y/label-has-for":"off"
        //should add ".ts" if typescript project
       }
 }
