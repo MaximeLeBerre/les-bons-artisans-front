@@ -14,7 +14,7 @@ export default function ButtonAdd() {
   const classes = useStyles();
   return (
     <>
-      <Link to="/form/post" className={classes.root}>
+      <Link to="/form/post" className={classes.root} style={{ textDecoration: 'none' }}>
         <Button variant="contained" color="primary">
           ADD NEw
         </Button>

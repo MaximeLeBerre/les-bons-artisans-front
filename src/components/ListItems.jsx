@@ -16,22 +16,24 @@ function ListItem() {
     <>
       <div
         style={{
-          display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'
+          display: 'flex', justifyContent: 'center'
         }}
       >
-        {items.map((item) => (
-          <>
-            <Item
-              id={item._id}
-              name={item.name}
-              type={item.type}
-              price={item.price}
-              rating={item.rating}
-              warrantyYears={item.warranty_years}
-              available={item.available}
-            />
-          </>
-        ))}
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+          {items.map((item) => (
+            <>
+              <Item
+                id={item._id}
+                name={item.name}
+                type={item.type}
+                price={item.price}
+                rating={item.rating}
+                warrantyYears={item.warranty_years}
+                available={item.available}
+              />
+            </>
+          ))}
+        </div>
       </div>
     </>
   );

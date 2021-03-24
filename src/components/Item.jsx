@@ -84,7 +84,7 @@ export default function Item({
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Link to={`/details/${id}`}>
+        <Link to={`/details/${id}`} style={{ textDecoration: 'none' }}>
           <Button size="small" color="primary">
             Modifier
           </Button>
