@@ -3,9 +3,23 @@ import { useFormik } from 'formik';
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import { string } from 'prop-types';
+import Card from '@material-ui/core/Card';
+import { useState } from 'react';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
+
+const useStyles = makeStyles({
+  root: {
+    margin: 15
+  }
+});
 
 function FormItem({ history }) {
+  const [successMessage, setSuccessMessage] = useState(false);
+  const classes = useStyles();
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -26,68 +40,108 @@ function FormItem({ history }) {
         available: (values.available === 'true')
       };
       axios.post('http://localhost:3000/api/object', res)
-        .then((reponse) => reponse);
-      history.push('/');
+        .then((reponse) => reponse)
+        .then(() => {
+          setSuccessMessage(true);
+          setTimeout(() => {
+            setSuccessMessage(false);
+            history.push('/');
+          }, 2000);
+        }).catch((error) => console.log(error.message));
     }
   });
 
   return (
-    <div>
-      <form
-        onSubmit={formik.handleSubmit}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column'
-        }}
-      >
-        <TextField
-          id="name"
-          name="name"
-          label="Name"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-        />
-        <TextField
-          id="type"
-          name="type"
-          label="Type"
-          value={formik.values.type}
-          onChange={formik.handleChange}
-        />
-        <TextField
-          id="price"
-          name="price"
-          label="price"
-          value={formik.values.price}
-          onChange={formik.handleChange}
-        />
-        <TextField
-          id="rating"
-          name="rating"
-          label="rating"
-          value={formik.values.rating}
-          onChange={formik.handleChange}
-        />
-        <TextField
-          id="warranty_years"
-          name="warranty_years"
-          label="warranty_years"
-          value={formik.values.warranty_years}
-          onChange={formik.handleChange}
-        />
-        <TextField
-          id="available"
-          name="available"
-          label="available"
-          value={formik.values.available}
-          onChange={formik.handleChange}
-        />
-        <Button color="primary" variant="contained" type="submit">
-          Submit
-        </Button>
-      </form>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}
+    >
+      <Card className={classes.root}>
+        <form
+          onSubmit={formik.handleSubmit}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'column',
+            backgroundColor: 'lightgrey'
+          }}
+        >
+          <TextField
+            id="name"
+            name="name"
+            label="Name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <TextField
+            id="type"
+            name="type"
+            label="Type"
+            value={formik.values.type}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <TextField
+            id="price"
+            name="price"
+            label="Price"
+            value={formik.values.price}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <TextField
+            id="rating"
+            name="rating"
+            label="Rating"
+            value={formik.values.rating}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <TextField
+            id="warranty_years"
+            name="warranty_years"
+            label="Warranty Years"
+            value={formik.values.warranty_years}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <TextField
+            id="available"
+            name="available"
+            label="Available"
+            value={formik.values.available}
+            onChange={formik.handleChange}
+            className={classes.root}
+          />
+          <Button color="primary" variant="contained" type="submit" className={classes.root}>
+            Submit
+          </Button>
+        </form>
+      </Card>
+      {successMessage
+        ? (
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left'
+            }}
+            open="true"
+            message="Succes"
+            action={(
+              <>
+                <IconButton size="small" aria-label="close" color="primary">
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </>
+            )}
+          />
+        ) : <p /> }
     </div>
   );
 }

@@ -26,7 +26,8 @@
        "no-underscore-dangle": "off",
        "prefer-destructuring": ["error", {"object": false, "array": false}],
        "jsx-a11y/label-has-associated-control": "off",
-       "jsx-a11y/label-has-for":"off"
+       "jsx-a11y/label-has-for":"off",
+       "react/jsx-props-no-spreading": "off"
        //should add ".ts" if typescript project
       }
 }
