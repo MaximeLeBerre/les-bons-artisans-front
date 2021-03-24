@@ -67,7 +67,7 @@ export default function Item({
               {warrantyYears}
             </p>
             <p>
-              Disponible :
+              Disponibilité :
               {available ? (
                 <Badge
                   color="primary"

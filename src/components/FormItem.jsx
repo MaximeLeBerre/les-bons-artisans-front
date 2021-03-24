@@ -19,6 +19,7 @@ const useStyles = makeStyles({
 
 function FormItem({ history }) {
   const [successMessage, setSuccessMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
@@ -47,7 +48,12 @@ function FormItem({ history }) {
             setSuccessMessage(false);
             history.push('/');
           }, 2000);
-        }).catch((error) => console.log(error.message));
+        }).catch(() => {
+          setErrorMessage(true);
+          setTimeout(() => {
+            setErrorMessage(false);
+          }, 2000);
+        });
     }
   });
 
@@ -74,7 +80,7 @@ function FormItem({ history }) {
           <TextField
             id="name"
             name="name"
-            label="Name"
+            label="Nom"
             value={formik.values.name}
             onChange={formik.handleChange}
             className={classes.root}
@@ -90,7 +96,7 @@ function FormItem({ history }) {
           <TextField
             id="price"
             name="price"
-            label="Price"
+            label="Prix (€)"
             value={formik.values.price}
             onChange={formik.handleChange}
             className={classes.root}
@@ -98,7 +104,7 @@ function FormItem({ history }) {
           <TextField
             id="rating"
             name="rating"
-            label="Rating"
+            label="Note"
             value={formik.values.rating}
             onChange={formik.handleChange}
             className={classes.root}
@@ -106,7 +112,7 @@ function FormItem({ history }) {
           <TextField
             id="warranty_years"
             name="warranty_years"
-            label="Warranty Years"
+            label="Années de garantie"
             value={formik.values.warranty_years}
             onChange={formik.handleChange}
             className={classes.root}
@@ -114,13 +120,13 @@ function FormItem({ history }) {
           <TextField
             id="available"
             name="available"
-            label="Available"
+            label="Disponibilité"
             value={formik.values.available}
             onChange={formik.handleChange}
             className={classes.root}
           />
           <Button color="primary" variant="contained" type="submit" className={classes.root}>
-            Submit
+            Envoyer
           </Button>
         </form>
       </Card>
@@ -136,6 +142,24 @@ function FormItem({ history }) {
             action={(
               <>
                 <IconButton size="small" aria-label="close" color="primary">
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </>
+            )}
+          />
+        ) : <p /> }
+      {errorMessage
+        ? (
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left'
+            }}
+            open="true"
+            message="Erreur"
+            action={(
+              <>
+                <IconButton size="small" aria-label="close" color="secondary">
                   <CloseIcon fontSize="small" />
                 </IconButton>
               </>

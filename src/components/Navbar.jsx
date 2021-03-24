@@ -30,7 +30,7 @@ export default function Navbar() {
               Les Bons Artisans
             </Link>
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Se connecter</Button>
         </Toolbar>
       </AppBar>
     </div>

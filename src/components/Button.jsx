@@ -16,7 +16,7 @@ export default function ButtonAdd() {
     <>
       <Link to="/form/post" className={classes.root} style={{ textDecoration: 'none' }}>
         <Button variant="contained" color="primary">
-          ADD NEw
+          AJOUTER
         </Button>
       </Link>
     </>
