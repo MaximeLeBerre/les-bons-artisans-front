@@ -55,19 +55,19 @@ export default function Item({
               {type}
             </p>
             <p>
-              Price :
+              Prix :
               {price}
             </p>
             <p>
-              Rating :
+              Note :
               {rating}
             </p>
             <p>
-              Warranty Years :
+              Années de garantie :
               {warrantyYears}
             </p>
             <p>
-              Is available :
+              Disponible :
               {available ? (
                 <Badge
                   color="primary"

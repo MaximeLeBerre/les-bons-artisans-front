@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React from 'react';
 import { useFormik } from 'formik';
+import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import { string } from 'prop-types';
 
-export default function FormItem() {
+function FormItem({ history }) {
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -26,6 +27,7 @@ export default function FormItem() {
       };
       axios.post('http://localhost:3000/api/object', res)
         .then((reponse) => reponse);
+      history.push('/');
     }
   });
 
@@ -89,3 +91,9 @@ export default function FormItem() {
     </div>
   );
 }
+
+FormItem.propTypes = {
+  history: string.isRequired
+};
+
+export default withRouter(FormItem);

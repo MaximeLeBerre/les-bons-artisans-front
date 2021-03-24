@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Formik, Field, Form } from 'formik';
+import { string } from 'prop-types';
 
-export default function ItemDetails() {
+function ItemDetails({ history }) {
   const { id } = useParams();
 
   const [item, setItem] = useState([]);
@@ -32,6 +33,7 @@ export default function ItemDetails() {
               await new Promise((r) => setTimeout(r, 500));
               axios.put(`http://localhost:3000/api/object/${id}`, values)
                 .then((reponse) => reponse);
+              history.push('/');
             }}
           >
             <Form>
@@ -61,3 +63,9 @@ export default function ItemDetails() {
     </>
   );
 }
+
+ItemDetails.propTypes = {
+  history: string.isRequired
+};
+
+export default withRouter(ItemDetails);
