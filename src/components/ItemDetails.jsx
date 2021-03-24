@@ -18,7 +18,7 @@ export default function ItemDetails() {
   return (
     <>
       {item.map((obj) => (
-        <div>
+        <div key={obj.id + 1}>
           <Formik
             initialValues={{
               name: obj.name,
@@ -30,7 +30,6 @@ export default function ItemDetails() {
             }}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              /* const res = (JSON.stringify(values, null, 2)); */
               axios.put(`http://localhost:3000/api/object/${id}`, values)
                 .then((reponse) => reponse);
             }}

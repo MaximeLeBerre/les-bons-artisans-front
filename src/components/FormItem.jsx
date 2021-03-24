@@ -31,7 +31,15 @@ export default function FormItem() {
 
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}
+      >
         <TextField
           id="name"
           name="name"
