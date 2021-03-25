@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Item from './Item';
+import ButtonAdd from './Button';
 
 function ListItem() {
   const [items, setItems] = useState([]);
+  const token = localStorage.getItem('token');
+
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/object').then((res) => {
+    axios.get('http://localhost:3000/api/object', axiosConfig).then((res) => {
       const data = res.data;
       setItems(data);
     });
@@ -14,6 +22,15 @@ function ListItem() {
 
   return (
     <>
+      {token
+        ? (
+          <>
+            <h1 style={{ textAlign: 'center' }}>Liste des objets</h1>
+            <ButtonAdd />
+          </>
+        ) : (
+          <h1 style={{ textAlign: 'center' }}>Bienvenue, connectez-vous !</h1>
+        )}
       <div
         style={{
           display: 'flex', justifyContent: 'center', margin: '5%'

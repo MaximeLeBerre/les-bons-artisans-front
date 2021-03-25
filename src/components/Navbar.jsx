@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
 
+  const clearStorage = () => {
+    localStorage.clear();
+  };
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -30,7 +33,12 @@ export default function Navbar() {
               Les Bons Artisans
             </Link>
           </Typography>
-          <Button color="inherit">Se connecter</Button>
+          <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
+            <Button style={{ color: '#fafafa' }} onClick={clearStorage}>Log in / Log out</Button>
+          </Link>
+          <Link to="/signup" style={{ textDecoration: 'none', color: 'white' }}>
+            <Button style={{ color: '#fafafa' }}>Inscription</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

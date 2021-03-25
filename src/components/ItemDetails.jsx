@@ -8,9 +8,16 @@ function ItemDetails({ history }) {
   const { id } = useParams();
 
   const [item, setItem] = useState([]);
+  const token = localStorage.getItem('token');
+
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/object/${id}`).then((res) => {
+    axios.get(`http://localhost:3000/api/object/${id}`, axiosConfig).then((res) => {
       const data = [res.data];
       setItem(data);
     });
@@ -31,7 +38,7 @@ function ItemDetails({ history }) {
             }}
             onSubmit={async (values) => {
               await new Promise((r) => setTimeout(r, 500));
-              axios.put(`http://localhost:3000/api/object/${id}`, values)
+              axios.put(`http://localhost:3000/api/object/${id}`, values, axiosConfig)
                 .then((reponse) => reponse);
               history.push('/');
             }}

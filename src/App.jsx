@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ListItem from './components/ListItems';
 import ItemDetails from './components/ItemDetails';
 import Navbar from './components/Navbar';
-import ButtonAdd from './components/Button';
 import FormItem from './components/FormItem';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-        <ButtonAdd />
         <Switch>
           <Route exact path="/">
             <ListItem />
@@ -21,6 +21,12 @@ function App() {
           </Route>
           <Route path="/form/post">
             <FormItem />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/signUp">
+            <SignUp />
           </Route>
         </Switch>
       </Router>

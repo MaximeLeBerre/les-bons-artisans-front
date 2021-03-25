@@ -21,13 +21,20 @@ function FormItem({ history }) {
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
   const classes = useStyles();
+  const token = localStorage.getItem('token');
+
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
   const formik = useFormik({
     initialValues: {
       name: '',
       type: '',
-      price: null,
-      rating: null,
-      warranty_years: null,
+      price: undefined,
+      rating: undefined,
+      warranty_years: undefined,
       available: false
     },
     onSubmit: async (values) => {
@@ -40,7 +47,7 @@ function FormItem({ history }) {
         warranty_years: parseFloat(values.warranty_years),
         available: (values.available === 'true')
       };
-      axios.post('http://localhost:3000/api/object', res)
+      axios.post('http://localhost:3000/api/object', res, axiosConfig)
         .then((reponse) => reponse)
         .then(() => {
           setSuccessMessage(true);

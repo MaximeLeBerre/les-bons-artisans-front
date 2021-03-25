@@ -37,9 +37,16 @@ export default function Item({
   available
 }) {
   const classes = useStyles();
+  const token = localStorage.getItem('token');
+
+  const axiosConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  };
 
   const deleteObject = () => {
-    axios.delete(`http://localhost:3000/api/object/${id}`);
+    axios.delete(`http://localhost:3000/api/object/${id}`, axiosConfig);
   };
 
   return (
