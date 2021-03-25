@@ -208,7 +208,7 @@ function FormItem({ history }) {
             id="available"
             name="available"
             select
-            label="Disponibilité"
+            label="Disponible"
             value={formik.values.available}
             onChange={formik.handleChange}
             className={classes.select}
@@ -232,7 +232,7 @@ function FormItem({ history }) {
               horizontal: 'left'
             }}
             open="true"
-            message="Succes"
+            message="Object bien enregistré !"
             action={(
               <>
                 <IconButton size="small" aria-label="close" color="primary">
@@ -250,7 +250,7 @@ function FormItem({ history }) {
               horizontal: 'left'
             }}
             open="true"
-            message="Erreur"
+            message="Erreur lors de la sauvegarde !"
             action={(
               <>
                 <IconButton size="small" aria-label="close" color="secondary">
