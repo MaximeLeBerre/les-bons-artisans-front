@@ -1,3 +1,4 @@
+// ce composant permet l'jout de nouvelles données en BDD
 import axios from 'axios';
 import { useFormik } from 'formik';
 import { withRouter } from 'react-router-dom';
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
   }
 });
 
+// Ces variables sont les options des élements "SELECT" pour le formulaire
 const ratingOption = [
   {
     value: '1',
@@ -224,6 +226,7 @@ function FormItem({ history }) {
           </Button>
         </form>
       </Card>
+      {/* Snackbar afficher un message succes/erreur à l'utilisateur à l'envoi du formulaire */}
       {successMessage
         ? (
           <Snackbar

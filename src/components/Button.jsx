@@ -1,3 +1,4 @@
+// Ce composant permet d'aller à la page d'ajout de nouvelles données
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
