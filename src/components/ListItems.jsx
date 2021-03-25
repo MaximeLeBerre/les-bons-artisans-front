@@ -14,7 +14,7 @@ function ListItem() {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/object', axiosConfig).then((res) => {
+    axios.get('http://localhost:5000/api/object', axiosConfig).then((res) => {
       const data = res.data;
       setItems(data);
     });

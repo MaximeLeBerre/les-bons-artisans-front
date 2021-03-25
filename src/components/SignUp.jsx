@@ -13,7 +13,7 @@ const SignUp = ({ history }) => {
       password: ''
     },
     onSubmit: (values) => {
-      axios.post('http://localhost:3000/api/auth/signup', values)
+      axios.post('http://localhost:5000/api/auth/signup', values)
         .then(() => history.push('/login'));
     }
   });

@@ -115,7 +115,7 @@ function FormItem({ history }) {
         warranty_years: parseFloat(values.warranty_years),
         available: (values.available === 'true')
       };
-      axios.post('http://localhost:3000/api/object', res, axiosConfig)
+      axios.post('http://localhost:5000/api/object', res, axiosConfig)
         .then((reponse) => reponse)
         .then(() => {
           setSuccessMessage(true);

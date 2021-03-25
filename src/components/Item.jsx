@@ -46,7 +46,7 @@ export default function Item({
   };
 
   const deleteObject = () => {
-    axios.delete(`http://localhost:3000/api/object/${id}`, axiosConfig);
+    axios.delete(`http://localhost:5000/api/object/${id}`, axiosConfig);
   };
 
   return (

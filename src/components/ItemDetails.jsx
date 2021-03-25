@@ -19,7 +19,7 @@ function ItemDetails({ history }) {
   };
   const [item, setItem] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/object/${id}`, axiosConfig).then((res) => {
+    axios.get(`http://localhost:5000/api/object/${id}`, axiosConfig).then((res) => {
       const data = [res.data];
       setItem(data);
     });
@@ -42,7 +42,7 @@ function ItemDetails({ history }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`http://localhost:3000/api/object/${id}`, formValues, axiosConfig)
+    axios.put(`http://localhost:5000/api/object/${id}`, formValues, axiosConfig)
       .then((reponse) => reponse);
     history.push('/');
   };

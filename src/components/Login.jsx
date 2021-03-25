@@ -1,6 +1,5 @@
-import React from 'react';
 import { useFormik } from 'formik';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { string } from 'prop-types';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -13,7 +12,7 @@ const Login = ({ history }) => {
       password: ''
     },
     onSubmit: (values) => {
-      axios.post('http://localhost:3000/api/auth/login', values)
+      axios.post('http://localhost:5000/api/auth/login', values)
         .then((response) => response.data.token)
         .then((response) => localStorage.setItem('token', response))
         .then(() => history.push('/'));
@@ -75,9 +74,12 @@ const Login = ({ history }) => {
             width: '25ch'
           }}
         >
-          Submit
+          Se connecter
         </Button>
       </form>
+      <Link to="/signup" style={{ textDecoration: 'none' }}>
+        <Button color="primary" variant="contained">Inscription</Button>
+      </Link>
     </div>
   );
 };

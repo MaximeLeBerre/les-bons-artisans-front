@@ -34,10 +34,7 @@ export default function Navbar() {
             </Link>
           </Typography>
           <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
-            <Button style={{ color: '#fafafa' }} onClick={clearStorage}>Log in / Log out</Button>
-          </Link>
-          <Link to="/signup" style={{ textDecoration: 'none', color: 'white' }}>
-            <Button style={{ color: '#fafafa' }}>Inscription</Button>
+            <Button style={{ color: '#fafafa' }} onClick={clearStorage}>Connection/ Déconnection</Button>
           </Link>
         </Toolbar>
       </AppBar>
