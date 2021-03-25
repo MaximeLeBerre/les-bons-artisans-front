@@ -1,10 +1,11 @@
-# Test technique Les Bons Artisans
+# Test technique Les Bons Artisans 
 ## How to run project
 
 ### Clone this repository with :
 `git clone https://github.com/MaximeLeBerre/les-bons-artisans-front.git`
 ### Open a new terminal in your code editor, make sure you are in the project folder and run :
-`npm install`
+`npm install` 
+ then
 `npm start`
 
 ### Now, you run the app in the development mode.
