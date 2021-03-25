@@ -19,9 +19,24 @@ const SignUp = ({ history }) => {
   });
 
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column'
+      }}
+    >
       <h1>Inscription</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column'
+        }}
+      >
         <TextField
           id="email"
           name="email"
@@ -30,6 +45,10 @@ const SignUp = ({ history }) => {
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          style={{
+            margin: 15,
+            width: '25ch'
+          }}
         />
         <TextField
           id="password"
@@ -40,8 +59,20 @@ const SignUp = ({ history }) => {
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          style={{
+            margin: 15,
+            width: '25ch'
+          }}
         />
-        <Button color="primary" variant="contained" type="submit">
+        <Button
+          color="primary"
+          variant="contained"
+          type="submit"
+          style={{
+            margin: 15,
+            width: '25ch'
+          }}
+        >
           Submit
         </Button>
       </form>

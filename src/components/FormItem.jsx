@@ -10,12 +10,78 @@ import { useState } from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles({
   root: {
-    margin: 15
+    margin: 15,
+    width: '25ch'
+  },
+  card: {
+    margin: 15,
+    backgroundColor: '#F6F6F6',
+    padding: '10px'
+  },
+  select: {
+    margin: 1,
+    width: '25ch'
   }
 });
+
+const ratingOption = [
+  {
+    value: '1',
+    label: 1
+  },
+  {
+    value: '2',
+    label: 2
+  },
+  {
+    value: '3',
+    label: 3
+  },
+  {
+    value: '4',
+    label: 4
+  },
+  {
+    value: '5',
+    label: 5
+  }
+];
+const warrantyYearsOption = [
+  {
+    value: '1',
+    label: 1
+  },
+  {
+    value: '2',
+    label: 2
+  },
+  {
+    value: '3',
+    label: 3
+  },
+  {
+    value: '4',
+    label: 4
+  },
+  {
+    value: '5',
+    label: 5
+  }
+];
+const availableOption = [
+  {
+    value: true,
+    label: 'Oui'
+  },
+  {
+    value: false,
+    label: 'Non'
+  }
+];
 
 function FormItem({ history }) {
   const [successMessage, setSuccessMessage] = useState(false);
@@ -35,7 +101,7 @@ function FormItem({ history }) {
       price: undefined,
       rating: undefined,
       warranty_years: undefined,
-      available: false
+      available: true
     },
     onSubmit: async (values) => {
       await new Promise((r) => setTimeout(r, 500));
@@ -73,15 +139,15 @@ function FormItem({ history }) {
         flexDirection: 'column'
       }}
     >
-      <Card className={classes.root}>
+      <h1>Ajouter un objet</h1>
+      <Card className={classes.card}>
         <form
           onSubmit={formik.handleSubmit}
           style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            flexDirection: 'column',
-            backgroundColor: 'lightgrey'
+            flexDirection: 'column'
           }}
         >
           <TextField
@@ -111,27 +177,48 @@ function FormItem({ history }) {
           <TextField
             id="rating"
             name="rating"
+            select
             label="Note"
             value={formik.values.rating}
             onChange={formik.handleChange}
-            className={classes.root}
-          />
+            className={classes.select}
+          >
+            {ratingOption.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             id="warranty_years"
             name="warranty_years"
+            select
             label="Années de garantie"
             value={formik.values.warranty_years}
             onChange={formik.handleChange}
-            className={classes.root}
-          />
+            className={classes.select}
+          >
+            {warrantyYearsOption.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             id="available"
             name="available"
+            select
             label="Disponibilité"
             value={formik.values.available}
             onChange={formik.handleChange}
-            className={classes.root}
-          />
+            className={classes.select}
+          >
+            {availableOption.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <Button color="primary" variant="contained" type="submit" className={classes.root}>
             Envoyer
           </Button>
