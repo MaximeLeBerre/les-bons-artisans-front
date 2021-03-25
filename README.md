@@ -15,10 +15,10 @@ You can have an error from eslint, make sure eslint is installed else install on
 
 ## Inside application :
 ## Go to button 
-`connection / déconnection ``
-## First click on the button if you're not register
+`connection / déconnection `
+## First, click on the button if you're not register
 `inscription`
 ## Connect with email and password and 
-`submit``
+`submit`
 
-## Now, you can play with the app, modify, update or delete object !
+## Now, you can play with the app, modify, update or delete objects !
