@@ -9,7 +9,8 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(2),
       position: 'absolute',
       right: 2,
-      top: 100
+      top: 100,
+      textDecoration: 'none'
     }
   }
 }));
@@ -18,7 +19,7 @@ export default function ButtonAdd() {
   const classes = useStyles();
   return (
     <>
-      <Link to="/form/post" className={classes.root} style={{ textDecoration: 'none' }}>
+      <Link to="/form/post" className={classes.root}>
         <Button variant="contained" color="primary">
           AJOUTER
         </Button>

@@ -1,11 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { makeStyles } from '@material-ui/core/styles';
 import Item from './Item';
 import ButtonAdd from './Button';
+
+const useStyles = makeStyles({
+  title: {
+    textAlign: 'center'
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '5%'
+  },
+  subContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  }
+});
 
 function ListItem() {
   const [items, setItems] = useState([]);
   const token = localStorage.getItem('token');
+  const classes = useStyles();
 
   const axiosConfig = {
     headers: {
@@ -25,18 +43,16 @@ function ListItem() {
       {token
         ? (
           <>
-            <h1 style={{ textAlign: 'center' }}>Liste des objets</h1>
+            <h1 className={classes.title}>Liste des objets</h1>
             <ButtonAdd />
           </>
         ) : (
-          <h1 style={{ textAlign: 'center' }}>Bienvenue, connectez-vous !</h1>
+          <h1 className={classes.title}>Bienvenue, connectez-vous !</h1>
         )}
       <div
-        style={{
-          display: 'flex', justifyContent: 'center', margin: '5%'
-        }}
+        className={classes.container}
       >
-        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+        <div className={classes.subContainer}>
           {items.map((item) => (
             <Item
               key={item._id + 1}

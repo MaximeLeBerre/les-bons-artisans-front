@@ -26,6 +26,18 @@ const useStyles = makeStyles({
   select: {
     margin: 1,
     width: '25ch'
+  },
+  form: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
   }
 });
 
@@ -134,23 +146,13 @@ function FormItem({ history }) {
 
   return (
     <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column'
-      }}
+      className={classes.container}
     >
       <h1>Ajouter un objet</h1>
       <Card className={classes.card}>
         <form
           onSubmit={formik.handleSubmit}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'column'
-          }}
+          className={classes.form}
         >
           <TextField
             id="name"

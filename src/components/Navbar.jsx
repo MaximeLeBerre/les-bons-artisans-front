@@ -14,6 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'white'
+  },
+  btn: {
+    color: '#fafafa'
   }
 }));
 
@@ -29,12 +36,12 @@ export default function Navbar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <Link to="/" style={{ textDecoration: 'none', color: 'white' }}>
+            <Link to="/" className={classes.link}>
               Les Bons Artisans
             </Link>
           </Typography>
-          <Link to="/login" style={{ textDecoration: 'none', color: 'white' }}>
-            <Button style={{ color: '#fafafa' }} onClick={clearStorage}>Connection/ Déconnection</Button>
+          <Link to="/login" className={classes.link}>
+            <Button className={classes.btn} onClick={clearStorage}>Connection/ Déconnection</Button>
           </Link>
         </Toolbar>
       </AppBar>
